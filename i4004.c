@@ -9,10 +9,7 @@ void cpu_run() {
         if(!cpu_unit.cpuRunning)
             break;
         else {
-            printf("I4004 is running\n");
-            printf("I4004 is running\n");
-            printf("I4004 is running\n");
-            cpu_unit.cpuRunning = 0;
+            // read
         }
     }
 }
