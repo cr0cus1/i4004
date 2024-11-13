@@ -10,7 +10,7 @@ typedef struct Cpu{
 } Cpu;
 
 void cpu_run();
-int cpu_init_env();
+void cpu_init_env(Cpu *cpu_unit);
 void cpu_reset_env();
 
 #endif
