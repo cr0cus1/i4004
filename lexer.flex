@@ -6,14 +6,15 @@
 
 %%
 
-[A-Za-z_][A-Za-z0-9_]*, { // code for labels }
+[A-Za-z_][A-Za-z0-9_]*, { printf("it's a label\n!") }
 
 [A-Za-z_][A-Za-z0-9_]*[ \t]+[0-9]+ { 
-                        // code for opcodes with parameters 
+                            printf("it's a cmd with arg!\n");
                         }
 
 [A-Za-z_][A-Za-z0-9_]* { 
-                        // code for opcodes without parameters
+                            if(is_command(yytext))
+                                return_str(yytext);
                         }
 
 [ \t]+ ;
