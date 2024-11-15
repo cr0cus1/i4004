@@ -6,15 +6,17 @@
 
 %%
 
-[A-Za-z_][A-Za-z0-9_]*, { printf("it's a label\n!") }
+[A-Za-z_][A-Za-z0-9_]*, { puts("label!"); }
 
 [A-Za-z_][A-Za-z0-9_]*[ \t]+[0-9]+ { 
-                            printf("it's a cmd with arg!\n");
+                            //parse_line(yytext)
+                            puts("cmd with arg!");
                         }
 
 [A-Za-z_][A-Za-z0-9_]* { 
-                            if(is_command(yytext))
-                                return_str(yytext);
+                            puts("cmd without arg!");
+                            //if(is_command(yytext))
+                            //    return_str(yytext);
                         }
 
 [ \t]+ ;
