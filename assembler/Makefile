@@ -5,4 +5,4 @@ lexer.c: lexer.flex
 	flex -o lexer.c lexer.flex
 
 clean:
-	rm lexer.c lexer
+	rm -f lexer.c lexer
