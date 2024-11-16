@@ -25,10 +25,16 @@ int is_command(const char *cmd) {
 }
 
 void parse_line(const char *line) {
-    char cmd[6];
+    char cmd[6], arg[4];
+    int i;
     memset(cmd, 0, sizeof(cmd));
-    for(int i = 0; line[i] != ' '; i++)
+    memset(arg, 0, sizeof(arg));
+    for(i = 0; line[i] != ' '; i++)
         cmd[i] = line[i];
+    
+    i++;
 
-    printf("%s\n", cmd);
+    for(int j = 0; line[i] != '\0'; j++, i++)
+        arg[j] = line[i];
+    printf("cmd is %s and arg is %s\n", cmd, arg);
 }
