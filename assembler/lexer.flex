@@ -9,10 +9,7 @@
 [A-Za-z_][A-Za-z0-9_]*, { puts("label!"); }
 
 [A-Za-z_][A-Za-z0-9_]*[ \t]+[0-9]+ { 
-                        if(is_command(yytext))
-                            puts("legit cmd with arg!");
-                        else
-                            puts("invalid cmd with arg!");
+                        parse_line(yytext);
                         }
 
 [A-Za-z_][A-Za-z0-9_]* { 

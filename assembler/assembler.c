@@ -23,3 +23,12 @@ int is_command(const char *cmd) {
     }
     return 0;
 }
+
+void parse_line(const char *line) {
+    char cmd[6];
+    memset(cmd, 0, sizeof(cmd));
+    for(int i = 0; line[i] != ' '; i++)
+        cmd[i] = line[i];
+
+    printf("%s\n", cmd);
+}
