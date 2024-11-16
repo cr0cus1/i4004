@@ -1,7 +1,7 @@
-lexer: lexer.flex assembler.c lexer.c
-	gcc main.c lexer.c -lfl -o lexer
+lexer: assembler.c lexer.c
+	gcc main.c assembler.c lexer.c -lfl -g -o lexer
 
-lexer.c: 
+lexer.c: lexer.flex
 	flex -o lexer.c lexer.flex
 
 clean:

@@ -16,9 +16,8 @@ const char *cmds_names[] = {
 };
 
 int is_command(const char *cmd) {
-    printf("%s\n", cmd);
-    for(int i = 0;;i++) {
-        if(strcmp(cmds_names[i], cmd) == 0) {
+    for(int i = 0; i < 44;i++) {
+        if(!strcmp(cmds_names[i], cmd)) {
             return 1;
         }
     }
