@@ -1,5 +1,6 @@
 #include "assembler.h"
 #include <string.h>
+#include <stdio.h>
 
 const char *cmds_names[] = {
     "JCN", "FIM", "SRC", "FIN", "JIN",
@@ -15,10 +16,10 @@ const char *cmds_names[] = {
 };
 
 int is_command(const char *cmd) {
+    printf("%s\n", cmd);
     for(int i = 0;;i++) {
-        if(!strcmp(cmds_names[i], cmd)) {
+        if(strcmp(cmds_names[i], cmd) == 0) {
             return 1;
-            break;
         }
     }
     return 0;
