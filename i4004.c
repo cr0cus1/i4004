@@ -19,16 +19,12 @@ void cpu_run() {
     cpu_unit.cycles_num = 1;
 
     while(cpu_unit.cpuRunning) {
-        if(!cpu_unit.cpuRunning)
-            break;
+        if(cpu_unit.cycles_num == 1) {
+            cpu_init_env(&cpu_unit);
+            cpu_unit.cycles_num += 1;
+        }
         else {
-            if(cpu_unit.cycles_num == 1) {
-                cpu_init_env(&cpu_unit);
-                cpu_unit.cycles_num += 1;
-            }
-            else {
 //                cpu_execute_opcode(&cpu_unit);
-            }
         }
     }
 }
