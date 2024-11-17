@@ -31,7 +31,7 @@ void cpu_run(const char *source_file) {
             FILE *file = fopen(source_file, "r");
             if(file) {
                 while(fgets(file_line, sizeof(file_line), file)) {
-                    printf("%s\n", file_line);
+                    lexer_start(file_line);
                 }
             }
             fclose(file);
