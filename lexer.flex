@@ -18,7 +18,8 @@
 
 [ \t]+ ;
 %%
-void lexer_start(FILE *input_file) {
-    yyin = input_file;
+void lexer_start(const char *line) {
+    YY_BUFFER_STATE buffer = yy_scan_string(line); 
     yylex();
+    yy_delete_buffer(buffer); 
 }

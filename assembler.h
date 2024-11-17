@@ -8,7 +8,7 @@ void parse_line_with_arg(const char *line);
 void parse_line_without_arg(const char *line);
 void exec_cmd();
 void label_code();
-void lexer_start();
+void lexer_start(const char *line);
 const char *return_str(const char *str);
 
 
