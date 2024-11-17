@@ -1,6 +1,8 @@
-#include "i4004.h"
 #include <stdio.h>
+#include "assembler.h"
 
 int main(int argc, char **argv) {
-    cpu_run();
+    FILE *file;
+    file = fopen(argv[1], "r");
+    lexer_start(file);
 }
