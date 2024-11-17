@@ -15,5 +15,6 @@ void cpu_init_env(Cpu *cpu_unit);
 void cpu_reset_env();
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg);
 void print_cpu_env(Cpu *cpu_unit);
+void print_binary_representation(int num);
 
 #endif

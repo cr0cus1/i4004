@@ -7,9 +7,22 @@
 
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg);
 
+void print_binary_representation(int num) {
+    int bits_num = sizeof(num) * 8;
+    printf("\t");
+    for(int i = bits_num - 1; i >=0; i--) {
+        printf("%d", (num >> i) & 1);
+    }
+    printf(" (dec: %d)", num);
+}
+
 void print_cpu_env(Cpu *cpu_unit) {
-    printf("ACCUMULATOR: %d\n", cpu_unit->accumulator);
-    printf("CARRY-BIT : %d\n", cpu_unit->carry_bit);
+    printf("ACCUMULATOR: ");
+    print_binary_representation(cpu_unit->accumulator);
+    printf("\n");
+    printf("CARRY-BIT: ");
+    print_binary_representation(cpu_unit->carry_bit);
+    printf("\n");
 }
 
 void cpu_init_env(Cpu *cpu_unit) {
