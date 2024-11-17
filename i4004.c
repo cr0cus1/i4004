@@ -20,6 +20,8 @@ void cpu_run(const char *source_file) {
     cpu_unit.cycles_num = 1;
     char file_line[256];
     size_t line_len;
+    char cmd[5];
+    char arg[5];
 
     while(cpu_unit.cpuRunning) {
         if(cpu_unit.cycles_num == 1) {
@@ -31,7 +33,8 @@ void cpu_run(const char *source_file) {
             FILE *file = fopen(source_file, "r");
             if(file) {
                 while(fgets(file_line, sizeof(file_line), file)) {
-                    lexer_start(file_line);
+                    lexer_start(file_line, cmd, arg);
+                    printf("this is command - %s\n", cmd);
                 }
             }
             fclose(file);
