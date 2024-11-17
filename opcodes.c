@@ -5,10 +5,14 @@
 #include "opcodes.h"
 
 void opcode_clb(Cpu *cpu_unit, char *arg) {
+    cpu_unit->accumulator = 0;
+    cpu_unit->carry_bit = 0;
 }
 void opcode_clc(Cpu *cpu_unit, char *arg) {
+    cpu_unit->carry_bit = 0;
 }
 void opcode_iac(Cpu *cpu_unit, char *arg) {
+    cpu_unit->accumulator += 1;
 }
 void opcode_cmc(Cpu *cpu_unit, char *arg) {
 }

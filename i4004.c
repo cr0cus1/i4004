@@ -7,6 +7,11 @@
 
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg);
 
+void print_cpu_env(Cpu *cpu_unit) {
+    printf("ACCUMULATOR: %d\n", cpu_unit->accumulator);
+    printf("CARRY-BIT : %d\n", cpu_unit->carry_bit);
+}
+
 void cpu_init_env(Cpu *cpu_unit) {
     memset(cpu_unit->stack, 0, sizeof(cpu_unit->stack));
     memset(cpu_unit->registers, 0, sizeof(cpu_unit->registers));
@@ -42,9 +47,12 @@ void cpu_run(const char *source_file) {
             cpu_unit.cpuRunning = 0;
         }
     }
+    print_cpu_env(&cpu_unit);
 }
 
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {
+    if(!strcmp(cmd, "IAC"))
+        opcode_iac(cpu_unit, arg);
     if(!strcmp(cmd, "JCN"))
         opcode_jcn(cpu_unit, arg);
 }
