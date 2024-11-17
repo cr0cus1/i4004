@@ -4,6 +4,8 @@
 #include "assembler.h"
 
 char cmd_yylex[5];
+char arg_yylex[5];
+int is_arg;
 %}
 
 %%
@@ -11,12 +13,24 @@ char cmd_yylex[5];
 [A-Za-z_][A-Za-z0-9_]*, { puts("label!"); }
 
 [A-Za-z_][A-Za-z0-9_]*[ \t]+[0-9]+ { 
-                            parse_line_with_arg(yytext);
+                            parse_line_with_arg(yytext, cmd_yylex, arg_yylex);
+                            if(is_command(cmd_yylex))
+                                is_arg = 1;
+                            else {
+                                printf("invalid cmd!\n");
+                                exit(1);
+                            }
+
                         }
 
 [A-Za-z_][A-Za-z0-9_]* { 
                             if(is_command(yytext)) {
                                 strcpy(cmd_yylex, yytext);
+                                is_arg = 0;
+                            }
+                            else {
+                                printf("invalid cmd!\n");
+                                exit(1);
                             }
                         }
 
@@ -25,6 +39,13 @@ char cmd_yylex[5];
 void lexer_start(const char *line, char *cmd, char *arg) {
     YY_BUFFER_STATE buffer = yy_scan_string(line); 
     yylex();
-    strcpy(cmd,cmd_yylex);
+    if(is_arg) {
+        strcpy(cmd, cmd_yylex);
+        strcpy(arg, arg_yylex);
+    }
+    else {
+        strcpy(cmd,cmd_yylex);
+        arg = NULL;
+    }
     yy_delete_buffer(buffer); 
 }

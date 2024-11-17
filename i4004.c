@@ -29,12 +29,14 @@ void cpu_run(const char *source_file) {
             cpu_unit.cycles_num += 1;
         }
         else {
-            printf("openning file %s!\n", source_file);
             FILE *file = fopen(source_file, "r");
             if(file) {
                 while(fgets(file_line, sizeof(file_line), file)) {
                     lexer_start(file_line, cmd, arg);
-                    printf("this is command - %s\n", cmd);
+                    printf("this is command - %s and this is arg - %s\n", cmd, arg);
+
+                    memset(cmd, 0, sizeof(cmd));
+                    memset(arg, 0, sizeof(arg));
                 }
             }
             fclose(file);

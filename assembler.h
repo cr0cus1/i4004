@@ -4,7 +4,7 @@
 extern const char *cmds_names[];
 
 int is_command(const char *cmd);
-void parse_line_with_arg(const char *line);
+void parse_line_with_arg(const char *line, char *cmd, char *arg);
 void exec_cmd();
 void label_code();
 void lexer_start(const char *line, char *cmd, char *arg);

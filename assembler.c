@@ -24,8 +24,7 @@ int is_command(const char *cmd) {
     return 0;
 }
 
-void parse_line_with_arg(const char *line) {
-    char cmd[6], arg[4];
+void parse_line_with_arg(const char *line, char *cmd, char *arg) {
     int i;
     memset(cmd, 0, sizeof(cmd));
     memset(arg, 0, sizeof(arg));
