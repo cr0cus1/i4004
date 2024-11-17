@@ -13,7 +13,7 @@ void cpu_init_env(Cpu *cpu_unit) {
     cpu_unit->accumulator = 0;
 }
 
-void cpu_run() {
+void cpu_run(FILE *source_file) {
     Cpu cpu_unit;
     cpu_unit.cpuRunning = 1;
     cpu_unit.cycles_num = 1;
@@ -24,7 +24,7 @@ void cpu_run() {
             cpu_unit.cycles_num += 1;
         }
         else {
-//                cpu_execute_opcode(&cpu_unit);
+            lexer_start(source_file);
         }
     }
 }

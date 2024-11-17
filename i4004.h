@@ -9,7 +9,7 @@ typedef struct Cpu {
     int cpuRunning;
 } Cpu;
 
-void cpu_run();
+void cpu_run(FILE *source_file);
 void cpu_init_env(Cpu *cpu_unit);
 void cpu_reset_env();
 void cpu_execute_opcode(Cpu *cpu_unit);

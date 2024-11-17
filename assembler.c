@@ -37,11 +37,9 @@ void parse_line_with_arg(const char *line) {
     for(int j = 0; line[i] != '\0'; j++, i++)
         arg[j] = line[i];
 
-    if(is_command(cmd))
-        // run cmd
+    printf("cmd with arg!\n");
 }
 
 void parse_line_without_arg(const char *line) {
-    if(is_command(line))
-        // run cmd
+    printf("cmd without arg!\n");
 }
