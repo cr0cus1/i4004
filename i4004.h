@@ -12,6 +12,6 @@ typedef struct Cpu {
 void cpu_run(const char *source_file);
 void cpu_init_env(Cpu *cpu_unit);
 void cpu_reset_env();
-void cpu_execute_opcode(Cpu *cpu_unit);
+void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg);
 
 #endif
