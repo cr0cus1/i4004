@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "i4004.h"
 #include "assembler.h"
+#include "opcodes.h"
+
+void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg);
 
 void cpu_init_env(Cpu *cpu_unit) {
     memset(cpu_unit->stack, 0, sizeof(cpu_unit->stack));
@@ -32,13 +35,16 @@ void cpu_run(const char *source_file) {
                     memset(arg, 0, sizeof(arg));
 
                     lexer_start(file_line, cmd, arg);
-
-                    printf("this is command - %s and this is arg - %s\n", cmd, arg);
-
+                    cpu_execute_opcode(&cpu_unit, cmd, arg);
                 }
             }
             fclose(file);
             cpu_unit.cpuRunning = 0;
         }
     }
+}
+
+void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {
+    if(!strcmp(cmd, "JCN"))
+        opcode_jcn(cpu_unit, arg);
 }
