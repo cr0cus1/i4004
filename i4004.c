@@ -25,6 +25,7 @@ void cpu_run(FILE *source_file) {
         }
         else {
             lexer_start(source_file);
+            cpu_unit.cpuRunning = 0;
         }
     }
 }

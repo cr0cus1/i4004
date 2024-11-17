@@ -14,4 +14,4 @@ lexer.c: lexer.flex
 	flex -o lexer.c lexer.flex
 
 clean:
-	rm -f lexer.c lexer *.o
+	rm -f lexer.c lexer *.o emulator

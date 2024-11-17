@@ -21,6 +21,4 @@
 void lexer_start(FILE *input_file) {
     yyin = input_file;
     yylex();
-
-    fclose(yyin);
 }
