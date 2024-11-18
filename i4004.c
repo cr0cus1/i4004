@@ -60,12 +60,19 @@ void cpu_run(const char *source_file) {
             cpu_unit.cpuRunning = 0;
         }
     }
-    print_cpu_env(&cpu_unit);
+    if(!cpu_unit.cpuRunning)
+        print_cpu_env(&cpu_unit);
 }
 
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {
     if(!strcmp(cmd, "IAC"))
         opcode_iac(cpu_unit, arg);
-    if(!strcmp(cmd, "JCN"))
+    else if(!strcmp(cmd, "JCN"))
         opcode_jcn(cpu_unit, arg);
+    else if(!strcmp(cmd, "CMC"))
+        opcode_cmc(cpu_unit, arg);
+    else if(!strcmp(cmd, "CMA"))
+        opcode_cma(cpu_unit, arg);
+    else if(!strcmp(cmd, "CLB"))
+        opcode_clb(cpu_unit, arg);
 }

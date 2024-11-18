@@ -1,7 +1,7 @@
 #ifndef I4004_H_
 #define I4004_H_
 
-typedef struct Cpu {
+typedef struct {
     int stack[3];
     int registers[16];
     int accumulator;

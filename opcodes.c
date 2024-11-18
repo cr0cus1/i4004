@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "assembler.h"
 #include "i4004.h"
 #include "opcodes.h"
@@ -15,8 +16,10 @@ void opcode_iac(Cpu *cpu_unit, char *arg) {
     cpu_unit->accumulator += 1;
 }
 void opcode_cmc(Cpu *cpu_unit, char *arg) {
+    cpu_unit->carry_bit = ~cpu_unit->carry_bit;
 }
 void opcode_cma(Cpu *cpu_unit, char *arg) {
+    cpu_unit->accumulator = ~cpu_unit->accumulator;
 }
 void opcode_ral(Cpu *cpu_unit, char *arg) {
 }
