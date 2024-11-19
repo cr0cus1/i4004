@@ -3,7 +3,7 @@
 #include <strings.h>
 #include "assembler.h"
 
-char cmd_yylex[5];
+char cmd_yylex[10];
 char arg_yylex[5];
 int is_arg;
 %}
@@ -25,7 +25,7 @@ int is_arg;
 
 [A-Za-z_][A-Za-z0-9_]* { 
                             if(is_command(yytext)) {
-                                strcpy(cmd_yylex, yytext);
+                                strncpy(cmd_yylex, yytext, sizeof(yytext));
                                 is_arg = 0;
                             }
                             else {
@@ -40,11 +40,11 @@ void lexer_start(const char *line, char *cmd, char *arg) {
     YY_BUFFER_STATE buffer = yy_scan_string(line); 
     yylex();
     if(is_arg) {
-        strcpy(cmd, cmd_yylex);
-        strcpy(arg, arg_yylex);
+        strncpy(cmd, cmd_yylex, sizeof(cmd_yylex));
+        strncpy(arg, arg_yylex, sizeof(arg_yylex));
     }
     else {
-        strcpy(cmd,cmd_yylex);
+        strncpy(cmd,cmd_yylex, sizeof(cmd_yylex));
         arg = NULL;
     }
     yy_delete_buffer(buffer); 
