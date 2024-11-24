@@ -22,8 +22,11 @@ void opcode_cma(Cpu *cpu_unit) {
     cpu_unit->accumulator = ~cpu_unit->accumulator;
 }
 void opcode_ral(Cpu *cpu_unit) {
+    // circular left shift over carry flag
+    cpu_unit->accumulator = cpu_unit->accumulator << 1;
 }
 void opcode_rar(Cpu *cpu_unit) {
+    // circular right shift over carry flag
 }
 void opcode_tcc(Cpu *cpu_unit, char *arg) {
 }

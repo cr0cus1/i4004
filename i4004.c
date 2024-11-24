@@ -8,9 +8,9 @@
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg);
 
 void print_binary_representation(int num) {
-    int bits_num = sizeof(num) * 8;
+    int bits_num = sizeof(num) * 2;
     printf("\t");
-    for(int i = bits_num - 1; i >=0; i--) {
+    for(int i = 7; i >=0; i--) {
         printf("%d", (num >> i) & 1);
     }
     printf(" (dec: %d)", num);
@@ -66,13 +66,13 @@ void cpu_run(const char *source_file) {
 
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {
     if(!strcmp(cmd, "IAC"))
-        opcode_iac(cpu_unit, arg);
+        opcode_iac(cpu_unit);
     else if(!strcmp(cmd, "JCN"))
         opcode_jcn(cpu_unit, arg);
     else if(!strcmp(cmd, "CMC"))
-        opcode_cmc(cpu_unit, arg);
+        opcode_cmc(cpu_unit);
     else if(!strcmp(cmd, "CMA"))
-        opcode_cma(cpu_unit, arg);
+        opcode_cma(cpu_unit);
     else if(!strcmp(cmd, "CLB"))
-        opcode_clb(cpu_unit, arg);
+        opcode_clb(cpu_unit);
 }
