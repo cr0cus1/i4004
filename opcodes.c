@@ -5,6 +5,8 @@
 #include "i4004.h"
 #include "opcodes.h"
 
+#define LAST_BIT 128
+
 void opcode_clb(Cpu *cpu_unit) {
     cpu_unit->accumulator = 0;
     cpu_unit->carry_bit = 0;
@@ -22,8 +24,9 @@ void opcode_cma(Cpu *cpu_unit) {
     cpu_unit->accumulator = ~cpu_unit->accumulator;
 }
 void opcode_ral(Cpu *cpu_unit) {
-    // circular left shift over carry flag
     cpu_unit->accumulator = cpu_unit->accumulator << 1;
+
+    
 }
 void opcode_rar(Cpu *cpu_unit) {
     // circular right shift over carry flag

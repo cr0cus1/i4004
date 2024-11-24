@@ -10,7 +10,7 @@ void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg);
 void print_binary_representation(int num) {
     int bits_num = sizeof(num) * 2;
     printf("\t");
-    for(int i = 7; i >=0; i--) {
+    for(int i = 7; i >= 0; i--) {
         printf("%d", (num >> i) & 1);
     }
     printf(" (dec: %d)", num);
@@ -77,4 +77,6 @@ void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {
         opcode_cma(cpu_unit);
     else if(!strcmp(cmd, "CLB"))
         opcode_clb(cpu_unit);
+    else if(!strcmp(cmd, "RAL"))
+        opcode_ral(cpu_unit);
 }
