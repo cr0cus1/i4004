@@ -5,25 +5,25 @@
 #include "i4004.h"
 #include "opcodes.h"
 
-void opcode_clb(Cpu *cpu_unit, char *arg) {
+void opcode_clb(Cpu *cpu_unit) {
     cpu_unit->accumulator = 0;
     cpu_unit->carry_bit = 0;
 }
-void opcode_clc(Cpu *cpu_unit, char *arg) {
+void opcode_clc(Cpu *cpu_unit) {
     cpu_unit->carry_bit = 0;
 }
-void opcode_iac(Cpu *cpu_unit, char *arg) {
+void opcode_iac(Cpu *cpu_unit) {
     cpu_unit->accumulator += 1;
 }
-void opcode_cmc(Cpu *cpu_unit, char *arg) {
+void opcode_cmc(Cpu *cpu_unit) {
     cpu_unit->carry_bit = ~cpu_unit->carry_bit;
 }
-void opcode_cma(Cpu *cpu_unit, char *arg) {
+void opcode_cma(Cpu *cpu_unit) {
     cpu_unit->accumulator = ~cpu_unit->accumulator;
 }
-void opcode_ral(Cpu *cpu_unit, char *arg) {
+void opcode_ral(Cpu *cpu_unit) {
 }
-void opcode_rar(Cpu *cpu_unit, char *arg) {
+void opcode_rar(Cpu *cpu_unit) {
 }
 void opcode_tcc(Cpu *cpu_unit, char *arg) {
 }

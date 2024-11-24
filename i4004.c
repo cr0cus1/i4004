@@ -60,8 +60,8 @@ void cpu_run(const char *source_file) {
             cpu_unit.cpuRunning = 0;
         }
     }
-    if(!cpu_unit.cpuRunning)
-        print_cpu_env(&cpu_unit);
+//    if(!cpu_unit.cpuRunning)
+//        print_cpu_env(&cpu_unit);
 }
 
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {

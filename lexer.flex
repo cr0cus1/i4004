@@ -42,8 +42,8 @@ void lexer_start(const char *line, char *cmd, char *arg) {
     if(is_arg) {
         strncpy(cmd, cmd_yylex, sizeof(cmd_yylex));
         strncpy(arg, arg_yylex, sizeof(arg_yylex));
-    }
-    else {
+  }
+  else {
         strncpy(cmd,cmd_yylex, sizeof(cmd_yylex));
         arg = NULL;
     }
