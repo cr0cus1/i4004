@@ -10,10 +10,10 @@ i4004.o: i4004.c
 	gcc -c i4004.c -g -o i4004.o
 
 assembler.o: assembler.c
-	gcc -c assembler.c -o -g assembler.o
+	gcc -c -g assembler.c -o assembler.o
 
 lexer.c: lexer.flex
-	flex -o -g lexer.c lexer.flex
+	flex -o lexer.c lexer.flex
 
 clean:
 	rm -f lexer.c lexer *.o emulator

@@ -17,6 +17,7 @@ void print_binary_representation(int num) {
 }
 
 void print_cpu_env(Cpu *cpu_unit) {
+    printf("\n");
     printf("ACCUMULATOR: ");
     print_binary_representation(cpu_unit->accumulator);
     printf("\n");
@@ -52,6 +53,7 @@ void cpu_run(const char *source_file) {
                     memset(cmd, 0, sizeof(cmd));
                     memset(arg, 0, sizeof(arg));
 
+                    file_line[strlen(file_line)-1] = '\0';
                     lexer_start(file_line, cmd, arg);
                     cpu_execute_opcode(&cpu_unit, cmd, arg);
                 }
@@ -60,8 +62,8 @@ void cpu_run(const char *source_file) {
             cpu_unit.cpuRunning = 0;
         }
     }
-//    if(!cpu_unit.cpuRunning)
-//        print_cpu_env(&cpu_unit);
+    if(!cpu_unit.cpuRunning)
+        print_cpu_env(&cpu_unit);
 }
 
 void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {

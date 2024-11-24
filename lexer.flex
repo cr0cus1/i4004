@@ -10,14 +10,13 @@ int is_arg;
 
 %%
 
-[A-Za-z_][A-Za-z0-9_]*, { puts("label!"); }
+[A-Za-z_][A-Za-z0-9_]*, { puts("it's a label!"); }
 
 [A-Za-z_][A-Za-z0-9_]*[ \t]+[0-9]+ { 
                             parse_line_with_arg(yytext, cmd_yylex, arg_yylex);
                             if(is_command(cmd_yylex))
                                 is_arg = 1;
                             else {
-                                printf("invalid cmd!\n");
                                 exit(1);
                             }
 
@@ -29,12 +28,10 @@ int is_arg;
                                 is_arg = 0;
                             }
                             else {
-                                printf("invalid cmd!\n");
                                 exit(1);
                             }
                         }
 
-[ \t]+ ;
 %%
 void lexer_start(const char *line, char *cmd, char *arg) {
     YY_BUFFER_STATE buffer = yy_scan_string(line); 
@@ -42,8 +39,8 @@ void lexer_start(const char *line, char *cmd, char *arg) {
     if(is_arg) {
         strncpy(cmd, cmd_yylex, sizeof(cmd_yylex));
         strncpy(arg, arg_yylex, sizeof(arg_yylex));
-  }
-  else {
+    }
+    else {
         strncpy(cmd,cmd_yylex, sizeof(cmd_yylex));
         arg = NULL;
     }
