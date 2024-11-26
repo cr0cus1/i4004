@@ -39,11 +39,11 @@ void opcode_cmc(Cpu *cpu_unit);
 void opcode_cma(Cpu *cpu_unit);
 void opcode_ral(Cpu *cpu_unit);
 void opcode_rar(Cpu *cpu_unit);
-void opcode_tcc(Cpu *cpu_unit, char *arg);
-void opcode_dac(Cpu *cpu_unit, char *arg);
-void opcode_tcs(Cpu *cpu_unit, char *arg);
-void opcode_stc(Cpu *cpu_unit, char *arg);
-void opcode_daa(Cpu *cpu_unit, char *arg);
+void opcode_tcc(Cpu *cpu_unit);
+void opcode_dac(Cpu *cpu_unit);
+void opcode_tcs(Cpu *cpu_unit);
+void opcode_stc(Cpu *cpu_unit);
+void opcode_daa(Cpu *cpu_unit);
 void opcode_kbp(Cpu *cpu_unit, char *arg);
 void opcode_dcl(Cpu *cpu_unit, char *arg);
 

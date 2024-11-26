@@ -81,4 +81,12 @@ void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {
         opcode_ral(cpu_unit);
     else if(!strcmp(cmd, "RAR"))
         opcode_rar(cpu_unit);
+    else if(!strcmp(cmd, "TCC"))
+        opcode_tcc(cpu_unit);
+    else if(!strcmp(cmd, "DAC"))
+        opcode_dac(cpu_unit);
+    else if(!strcmp(cmd, "TCS"))
+        opcode_tcs(cpu_unit);
+    else if(!strcmp(cmd, "STC"))
+        opcode_stc(cpu_unit);
 }
