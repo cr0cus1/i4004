@@ -31,7 +31,7 @@ void opcode_ral(Cpu *cpu_unit) {
     if(old_carry)
         cpu_unit->accumulator |= 1;
     else
-        cpu_unit->accumulator &= 1;
+        cpu_unit->accumulator &= ~1;
     
 }
 void opcode_rar(Cpu *cpu_unit) {
