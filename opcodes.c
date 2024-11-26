@@ -24,8 +24,13 @@ void opcode_cma(Cpu *cpu_unit) {
     cpu_unit->accumulator = ~cpu_unit->accumulator;
 }
 void opcode_ral(Cpu *cpu_unit) {
+    int old_carry = cpu_unit->carry_bit;
+    cpu_unit->carry_bit = (cpu_unit->accumulator & (1 << 7)) ? 1 : 0;
     cpu_unit->accumulator = cpu_unit->accumulator << 1;
-
+    if(old_carry)
+        cpu_unit->accumulator |= 1;
+    else
+        cpu_unit->accumulator &= 1;
     
 }
 void opcode_rar(Cpu *cpu_unit) {
