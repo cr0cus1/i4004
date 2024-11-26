@@ -79,4 +79,6 @@ void cpu_execute_opcode(Cpu *cpu_unit, char *cmd, char *arg) {
         opcode_clb(cpu_unit);
     else if(!strcmp(cmd, "RAL"))
         opcode_ral(cpu_unit);
+    else if(!strcmp(cmd, "RAR"))
+        opcode_rar(cpu_unit);
 }

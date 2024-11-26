@@ -27,6 +27,7 @@ void opcode_ral(Cpu *cpu_unit) {
     int old_carry = cpu_unit->carry_bit;
     cpu_unit->carry_bit = (cpu_unit->accumulator & (1 << 7)) ? 1 : 0;
     cpu_unit->accumulator = cpu_unit->accumulator << 1;
+
     if(old_carry)
         cpu_unit->accumulator |= 1;
     else
@@ -34,7 +35,15 @@ void opcode_ral(Cpu *cpu_unit) {
     
 }
 void opcode_rar(Cpu *cpu_unit) {
-    // circular right shift over carry flag
+    int old_carry = cpu_unit->carry_bit;
+    cpu_unit->carry_bit = (cpu_unit->accumulator & 1) ? 1 : 0;
+    cpu_unit->accumulator = cpu_unit->accumulator >> 1;
+
+    if(old_carry)
+        cpu_unit->accumulator |= (1 << 7);
+    else
+        cpu_unit->accumulator &= ~(1 << 7);
+    
 }
 void opcode_tcc(Cpu *cpu_unit, char *arg) {
 }
