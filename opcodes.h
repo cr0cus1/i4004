@@ -1,6 +1,38 @@
 #ifndef OPCODES_H_  
 #define OPCODES_H_
 
+// ACCUMULATOR GROUP INSTRUCTIONS
+#define CLB 11110000
+#define CLC 11110001
+#define IAC 11110010
+#define CMA 11110100
+#define RAL 11110101
+#define RAR 11110110
+#define TCC 11110111
+#define DAC 11111000
+#define TCS 11111001
+#define STC 11111010
+#define DAA 11111011
+#define KBP 11111100
+#define DCL 11111101
+
+// IO/RAM INSTRUCTIONS
+#define WRM 11100000
+#define WMP 11100001
+#define WRR 11100010
+#define WR_phi 11100100
+#define WR1 11100101
+#define WR2 11100110
+#define WR3 11100111
+#define SBM 11101000
+#define RDM 11101001
+#define RDR 11101010
+#define ADM 11101011
+#define RD_phi 11101100
+#define RD1 11101101
+#define RD2 11101110
+#define RD3 11101111
+
 void opcode_jcn(Cpu *cpu_unit, char *arg);
 void opcode_fim(Cpu *cpu_unit, char *arg);
 void opcode_src(Cpu *cpu_unit, char *arg);
